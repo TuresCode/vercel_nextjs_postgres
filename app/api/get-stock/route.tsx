@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   try {
     // Fetch data from the SQL database using the provided symbol
     const result = await sql`
-                SELECT * FROM stock_symbols WHERE symbol ILIKE ${symbol}
+                SELECT * FROM stock_symbols WHERE symbol LIKE CONCAT('%', ${symbol}, '%');
             `;
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
