@@ -1,10 +1,8 @@
-import { sql as postgresSql } from '@vercel/postgres';
-import { NextResponse as nextResponse } from 'next/server';
-import fs from 'fs';
-const jsonDataString = fs.readFileSync('app/api/upload_tv/tv_data.json').toString();
+import { sql as postgresSql } from "@vercel/postgres";
+import { NextResponse as nextResponse } from "next/server";
 
 // export async function GET(request: Request) {
-  
+
 //   const data = JSON.parse(jsonDataString);
 //   try {
 

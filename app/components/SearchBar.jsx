@@ -1,13 +1,14 @@
-'use client'
+"use client";
 import { useState } from "react";
 import "./SearchBar.css";
 
 export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
+  const [duration, setDuration] = useState(0); // Initialize duration state
 
   const fetchData = (value) => {
     const apiUrl = `/api/get-stock?symbol=${value}`;
-  
+    const startTime = Date.now(); // Record start time
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
@@ -16,10 +17,13 @@ export const SearchBar = ({ setResults }) => {
         return response.json();
       })
       .then((json) => {
+        const endTime = Date.now(); // Get end time
+        const duration = endTime - startTime; // Subtract start time from end time
+        setDuration(duration); // Set duration state
         //console.log(json);
         console.log(json.result.rows);
         if (json.result.rows && Array.isArray(json.result.rows)) {
-          console.log('json.result is an array')
+          console.log("json.result is an array");
           // Filter and set results based on JSON data
           const results = json.result.rows.filter((ticker) => {
             return (
@@ -29,7 +33,7 @@ export const SearchBar = ({ setResults }) => {
               ticker.symbol.toLowerCase().includes(value.toLowerCase())
             );
           });
-          
+
           setResults(results);
         }
       })
@@ -61,6 +65,7 @@ export const SearchBar = ({ setResults }) => {
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
+      <p className="text-sm text-gray-500">{duration}ms</p>
     </div>
   );
 };
