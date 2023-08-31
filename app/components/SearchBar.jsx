@@ -65,6 +65,7 @@ export const SearchBar = ({ setResults }) => {
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
+      
       <p className="text-sm text-gray-500">{duration}ms</p>
     </div>
   );

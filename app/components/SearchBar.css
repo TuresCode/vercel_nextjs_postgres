@@ -1,6 +1,5 @@
-.input-wrapper{
+.input-wrapper {
     background-color: white;
-    width: 100%;
     border-radius: 10px;
     height: 2.5rem;
     padding: 0 15px;
@@ -8,19 +7,39 @@
     display: flex;
     align-items: center;
 }
+
+/* Adjust the width for smaller screens */
+@media (max-width: 600px) {
+    .input-wrapper {
+        width: 120%;
+        justify-content: center; /* Center align on small screens */
+        margin-bottom: 10px; /* Add some spacing between elements */
+        font-size: 0.875rem; /* Decrease font size on small screens */
+    }
+}
+
 input {
     background-color: transparent;
     border: none;
     height: 100%;
     font-size: 1.25rem;
     width: 100%;
-    margin-left: 5px;
+    margin-left: 4px;
 }
 
 input:focus {
     outline: none;
 }
 
+/* Adjust icon size for smaller screens */
 .search-icon {
     color: royalblue;
+    font-size: 1.5rem; /* Increase the icon size */
+}
+
+/* Additional styles for smaller screens */
+@media (max-width: 600px) {
+    .search-icon {
+        margin-right: 8px; /* Add some spacing between input and icon */
+    }
 }
