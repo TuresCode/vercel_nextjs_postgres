@@ -1,28 +1,17 @@
-import { sql } from '@vercel/postgres';
-import { NextApiResponse, NextApiRequest } from 'next';
+import { sql } from "@vercel/postgres";
+import { NextResponse } from "next/server";
 
-export async function getStock(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'GET') {
-        try {
-            const { symbol } = req.query;
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const symbol = searchParams.get("symbol");
 
-            // Check if symbol is an array and use the first element as the argument for the sql function
-            const symbolValue = Array.isArray(symbol) ? symbol[0] : symbol;
-
-            // Fetch data from the SQL database using the provided symbol
-            const result = await sql`
-                SELECT * FROM stock_symbols WHERE symbol ILIKE ${symbolValue}
+  try {
+    // Fetch data from the SQL database using the provided symbol
+    const result = await sql`
+                SELECT * FROM stock_symbols WHERE symbol ILIKE ${symbol}
             `;
-
-            return res.status(200).json({ result });
-        } catch (error) {
-            return res.status(500).json({ error: 'An error occurred while fetching data.' });
-        }
-    } else {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+    return NextResponse.json({ result }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
 }
-
-// Export the named function for the GET method
-export default getStock;
-
