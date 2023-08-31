@@ -6,6 +6,7 @@
     box-shadow: 0px 0px 8px #ddd;
     display: flex;
     align-items: center;
+    margin-bottom: 400px; 
 
 }
 
@@ -14,7 +15,6 @@
     .input-wrapper {
         width: 120%;
         justify-content: center; /* Center align on small screens */
-        margin-bottom: 10px; /* Add some spacing between elements */
         font-size: 0.875rem; /* Decrease font size on small screens */
     }
 }
