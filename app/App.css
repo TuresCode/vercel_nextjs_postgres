@@ -17,7 +17,7 @@
 /* Additional styles for smaller screens */
 @media (max-width: 600px) {
   .search-bar-container {
-      top: 5rem; /* Adjust the top position */
+      top: 8rem; /* Adjust the top position */
       min-width: 220px;
   }
 }
