@@ -28,9 +28,10 @@ export const SearchBar = ({ setResults }) => {
           const results = json.result.rows.filter((ticker) => {
             return (
               value &&
-              ticker &&
-              ticker.symbol &&
-              ticker.symbol.toLowerCase().includes(value.toLowerCase())
+              ticker 
+              // &&
+              // ticker.symbol &&
+              // ticker.symbol.toLowerCase().includes(value.toLowerCase())
             );
           });
 

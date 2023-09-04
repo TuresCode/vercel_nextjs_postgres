@@ -13,7 +13,11 @@ export async function GET(request: Request) {
     // return NextResponse.json({ result }, { status: 200 });
     // new way to query from another table
       const result = await sql`
-                SELECT * FROM tv WHERE exchange LIKE ${q} OR symbol LIKE ${q} OR description LIKE ${q} LIMIT 20
+      SELECT * FROM tv
+      WHERE exchange ILIKE ${q}
+        OR symbol ILIKE ${q}
+        OR description ILIKE ${q}
+      LIMIT 20
             `;
       return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
