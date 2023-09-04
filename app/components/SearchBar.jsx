@@ -23,7 +23,7 @@ export const SearchBar = ({ setResults }) => {
         //console.log(json);
         console.log(json.result.rows);
         if (json.result.rows && Array.isArray(json.result.rows)) {
-          console.log("json.result is an array");
+          //console.log("json.result is an array");
           // Filter and set results based on JSON data
           const results = json.result.rows.filter((ticker) => {
             return (
