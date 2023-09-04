@@ -22,18 +22,19 @@ export const SearchBar = ({ setResults }) => {
         setDuration(duration); // Set duration state
         //console.log(json);
         console.log(json.result.rows);
+        const results = json.result.rows;
         if (json.result.rows && Array.isArray(json.result.rows)) {
           //console.log("json.result is an array");
           // Filter and set results based on JSON data
-          const results = json.result.rows.filter((ticker) => {
-            return (
-              value &&
-              ticker 
-              // &&
-              // ticker.symbol &&
-              // ticker.symbol.toLowerCase().includes(value.toLowerCase())
-            );
-          });
+          // const results = json.result.rows.filter((ticker) => {
+          //   return (
+          //     value &&
+          //     ticker 
+          //     // &&
+          //     // ticker.symbol &&
+          //     // ticker.symbol.toLowerCase().includes(value.toLowerCase())
+          //   );
+          // });
 
           setResults(results);
         }
