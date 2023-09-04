@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     // return NextResponse.json({ result }, { status: 200 });
     // new way to query from another table
       const result = await sql`
-                SELECT * FROM tv WHERE exchange LIKE ${symbol} OR symbol LIKE ${symbol} OR desc LIKE ${symbol} LIMIT ${pagesize}"
+                SELECT * FROM tv WHERE exchange LIKE ${symbol} OR symbol LIKE ${symbol} OR description LIKE ${symbol} LIMIT ${pagesize}"
             `;
       return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
