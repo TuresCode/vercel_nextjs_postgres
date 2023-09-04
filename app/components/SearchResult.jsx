@@ -1,13 +1,19 @@
-import React from 'react'
-import './SearchResult.css'
+import React from 'react';
+import './SearchResult.css';
 
-export const SearchResult = ({result}) => {
-    return (
-        <div 
-        className="search-result"
-        onClick={(e) => alert(`You selected ${result.symbol} with the exchange ${result.exchange}`)}
-        >
-            {result.symbol}
-        </div>
-    )
+export const SearchResult = ({ result }) => {
+  const handleClick = (e) => {
+    alert(`Symbol: ${result.symbol}\nExchange: ${result.exchange}\nDescription: ${result.description}`);
+  };
+
+  return (
+    <div
+      className="search-result"
+      onClick={handleClick}
+    >
+      <p><strong>Symbol:</strong> {result.symbol}</p>
+      <p><strong>Exchange:</strong> {result.exchange}</p>
+      <p><strong>Description:</strong> {result.description}</p>
+    </div>
+  );
 };
