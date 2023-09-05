@@ -1,9 +1,14 @@
 import React from 'react';
 import './SearchResult.css';
 
+
 export const SearchResult = ({ result }) => {
   const handleClick = (e) => {
     alert(`Symbol: ${result.symbol}\nExchange: ${result.exchange}\nDescription: ${result.description}`);
+    //redirect to page
+    //url = `https://testserver-tl5pxhglmq-ew.a.run.app/calculate-levels?ticker=${result.symbol}&broker=${result.exchange}&interval=1D`;
+
+
   };
 
   return (

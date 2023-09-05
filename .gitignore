@@ -38,3 +38,10 @@ next-env.d.ts
 tv_data.csv
 tv_data.json
 
+#python
+*.pyc
+
+#jupyter
+.ipynb_checkpoints
+.ipynb
+
