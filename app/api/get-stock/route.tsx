@@ -15,10 +15,15 @@ export async function GET(request: Request) {
       const result = await sql`
       SELECT * FROM tv
       WHERE exchange ILIKE ${q}
-        OR symbol ILIKE ${q}
-        OR description ILIKE ${q}
-      LIMIT 20
-            `;
+         OR symbol ILIKE ${q}
+         OR description ILIKE ${q}
+      ORDER BY 
+        CASE
+          WHEN symbol ILIKE ${q} THEN 1
+          ELSE 2
+        END,
+        id
+      LIMIT 20`;
       return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
